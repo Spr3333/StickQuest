@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Weapon
+  - RedBlock
+  - BlueBlock
+  - RedPill
+  - BluePill
   layers:
   - Default
   - TransparentFX

@@ -8,8 +8,38 @@ public class PlayerAbility : MonoBehaviour
     bool hasBlueAbility = false;
     public float pillTimer = 5;
 
-    public GameObject redPill;
-    public GameObject bluePill;
+    public GameObject redBlock;
+    public GameObject blueBlock;
+    private Material orignalRed;
+    private Material orignalBlue;
+    public Material redReplacer;
+    public Material blueReplacer;
+
+
+    private void Start()
+    {
+        orignalRed = redBlock.GetComponent<MeshRenderer>().sharedMaterial;
+        orignalBlue = blueBlock.GetComponent<MeshRenderer>().sharedMaterial;
+    }
+    private void Update()
+    {
+        if (hasRedAbility)
+        {
+            MaterialBlocks("RedBlock" , redReplacer);
+        }
+        else
+        {
+            MaterialBlocks("RedBlock" , orignalRed);
+        }
+        if (hasBlueAbility)
+        {
+            MaterialBlocks("BlueBlock" , blueReplacer);
+        }
+        else
+        {
+            MaterialBlocks("BlueBlock" , orignalBlue);
+        }
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -36,6 +66,7 @@ public class PlayerAbility : MonoBehaviour
 
             other.gameObject.SetActive(false);
             StartCoroutine(Pill(other.gameObject));
+
         }
     }
 
@@ -64,6 +95,14 @@ public class PlayerAbility : MonoBehaviour
             }
         }
     }
+    void MaterialBlocks(string blockTag , Material blockmaterial)
+    {
+        GameObject[] blocks = GameObject.FindGameObjectsWithTag(blockTag);
+        foreach (GameObject block in blocks)
+        {
+            block.GetComponent<MeshRenderer>().material = blockmaterial;
+        }
+    }
 
     void OnTriggerExit(Collider other)
     {
@@ -71,12 +110,14 @@ public class PlayerAbility : MonoBehaviour
         {
             hasRedAbility = false;
             ReactivateBlockTriggers("RedBlock");
-            // other.isTrigger = false; // Deactivate trigger for the block
+
+
         }
         if (other.CompareTag("BlueBlock") && hasBlueAbility)
         {
             hasBlueAbility = false;
             ReactivateBlockTriggers("BlueBlock");
+
         }
     }
 

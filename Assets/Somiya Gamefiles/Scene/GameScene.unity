@@ -757,7 +757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 300
-  jumpForce: 8
+  jumpForce: 20
   groundRaycastDistance: 0.1
   groundLayer:
     serializedVersion: 2

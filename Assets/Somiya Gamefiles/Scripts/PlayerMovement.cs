@@ -42,23 +42,21 @@ public class PlayerMovement : MonoBehaviour
         HandleRotation();
         moveAmount = Mathf.Clamp01(Mathf.Abs(moveInput));
         HandleAnimation();
+
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            Jump();
+        }
+        else if (isGrounded)
+        {
+            anim.SetBool("Jump", false);
+
+        }
     }
 
     private void FixedUpdate()
     {
         HandleMovement();
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            Jump();
-        }
-        else if(isGrounded)
-        {
-            anim.SetBool("Jump", false);
-
-        }
-
-
-
     }
 
     void HandleMovement()

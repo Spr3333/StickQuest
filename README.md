@@ -1,6 +1,6 @@
 # StickQuest
 
-I've been longing to create a game for ages to delve into modular and dynamic programming. It's an action-packed project still in development with modular and OOPs concepts. Just wrapped up the main character and basic movement using root motion combat. However, combat is still a work in progress, with only one animation completed for a jab so far.
+I've been longing to create a game for ages to delve into modular and dynamic programming. It's an action-packed project still in development with modular and OOPs concepts. Just wrapped up the main character model in Blender and basic movement using root motion combat. However, combat is still a work in progress, with only one animation completed for a jab so far.
 
 Gameplay Video:
 
